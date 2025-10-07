@@ -1,0 +1,5 @@
+potential=flat
+internal=wiener
+beta=0.1
+interaction=none
+dt=0.01
