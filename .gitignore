@@ -34,3 +34,8 @@ results_plots/
 
 # Misc
 *.lock
+just_gifs/
+killed/
+unkilled/
+run_gif_maker.sh
+run_master.sh

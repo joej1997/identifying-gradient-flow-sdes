@@ -455,6 +455,9 @@ def main(args: argparse.Namespace) -> None:
             nn_conservative=True,
             nn_activation=args.activation,
             save_dir=method_dir,
+            solver=args.SB_solver,
+            kde_h=0.3,
+            generative=args.generative
         )
         refined_drift_fn, _, sigma2_refined = out
         use_refined = True
@@ -580,12 +583,19 @@ if __name__ == '__main__':
         "--activation", type=str, default="silu",
         help="Activation function for NN drift (softplus, silu, relu, tanh, gelu)"
     )
+    parser.add_argument(
+        "--SB_solver", type=str, default="mmot",
+        help="trajectory inference solver"
+    )
     parser.add_argument('--sb-nn-width', type=int, default=128)
     parser.add_argument('--sb-nn-depth', type=int, default=2)
     parser.add_argument('--sb-nn-lr', type=float, default=3e-3)
     parser.add_argument('--sb-nn-epochs', type=int, default=500)
     parser.add_argument('--sb-nn-conservative', action='store_true',
                         help='Use scalar potential φ and drift = -grad(φ).')
+    parser.add_argument('--generative', action='store_true',
+                        help='Option to make nn_APPEX generate its own samples, only advised if killed.')
+
     # in __main__ argparse section
     parser.add_argument('--method-tag', type=str, default='vanilla',
                         help='Subfolder tag to store results under out/plots/<dataset>/<method-tag>')

@@ -1,5 +1,0 @@
-potential=styblinski_tang
-internal=wiener
-beta=0.1
-interaction=none
-dt=0.01

@@ -1,5 +1,0 @@
-potential=poly
-internal=wiener
-beta=0.5
-interaction=none
-dt=0.01
